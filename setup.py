@@ -160,7 +160,7 @@ setup(
     # executes the function `main` from this package when invoked:
     entry_points={  # Optional
         'console_scripts': [
-            'cyberwar=cli:main',
+            'cyberwar=cyberwar_cli.cli:main',
         ],
     },
 

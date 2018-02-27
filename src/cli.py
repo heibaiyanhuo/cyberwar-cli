@@ -18,10 +18,15 @@ class CyWECLI():
 
     def processing(self):
         os.mkdir(self._arg_dict['name'])
-        os.system('cp {}/python/game/samples/simple_player_object_types.ini {}'.format(self._arg_dict['cywe_path'], self._arg_dict['name']))
-        os.system('cp {}python/game/src/cyberwar/braininterface/translations.py {}'.format(self._arg_dict['cywe_path'], self._arg_dict['name']))
-        os.system('cp {}/python/game/samples/simple_player_object_types.ini {}'.format(self._arg_dict['cywe_path'], self._arg_dict['name']))
-        os.system('cp {}/python/game/samples/simple_player_object_types.ini {}'.format(self._arg_dict['cywe_path'], self._arg_dict['name']))
+        os.system('cp {}/python/game/samples/simple_player_object_types.ini {}/'.format(self._arg_dict['cywe_path'], self._arg_dict['name']))
+        os.system('cp {}python/game/src/cyberwar/braininterface/translations.py {}/'.format(self._arg_dict['cywe_path'], self._arg_dict['name']))
+        os.system('cp {}/python/game/pypy-sandbox/src/*.py {}/'.format(self._arg_dict['cywe_path'], self._arg_dict['name']))
+        os.system('cp {}/python/bot/samples/*.py {}/'.format(self._arg_dict['cywe_path'], self._arg_dict['name']))
+
+        os.system('cp {}/pypy/sandbox/libpypy3-c.so {}/'.format(self._arg_dict['pypy_path'], self._arg_dict['name']))
+        os.system('cp {}/pypy/sandbox/pypy3-c-sandbox {}/'.format(self._arg_dict['pypy_path'], self._arg_dict['name']))
+
+        os.system('mv {}/simple_player_object_types.ini {}/object_types.ini'.format(self._arg_dict['name'], self._arg_dict['name']))
     
     def get_input(self, key, prompt):
         tmp = ''

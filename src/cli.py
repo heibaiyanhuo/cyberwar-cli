@@ -2,8 +2,6 @@ import os
 import shutil
 
 class CyWECLI():
-    
-
     def __init__(self):
         super().__init__()
         self._arg_dict = {}
@@ -14,12 +12,13 @@ class CyWECLI():
         self.get_input('cywe_path', 'Your local CyWE path: (Don\'t use "~")\n')
         self.get_input('pypy_path', 'Your local pypy path: (Don\'t use "~")\n')
         self.get_input('cc', 'Your C&C folder name: (leave blank for not creating C&C)\n')
+        self.processing()
 
 
     def processing(self):
         os.mkdir(self._arg_dict['name'])
         os.system('cp {}/python/game/samples/simple_player_object_types.ini {}/'.format(self._arg_dict['cywe_path'], self._arg_dict['name']))
-        os.system('cp {}python/game/src/cyberwar/braininterface/translations.py {}/'.format(self._arg_dict['cywe_path'], self._arg_dict['name']))
+        os.system('cp {}/python/game/src/cyberwar/braininterface/translations.py {}/'.format(self._arg_dict['cywe_path'], self._arg_dict['name']))
         os.system('cp {}/python/game/pypy-sandbox/src/*.py {}/'.format(self._arg_dict['cywe_path'], self._arg_dict['name']))
         os.system('cp {}/python/bot/samples/*.py {}/'.format(self._arg_dict['cywe_path'], self._arg_dict['name']))
 
@@ -49,7 +48,6 @@ class CyWECLI():
 def main():
     cli = CyWECLI()
     cli.start()
-    print(cli._arg_dict)
 
 if __name__ == '__main__':
     main()

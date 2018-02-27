@@ -1,0 +1,13 @@
+{
+	"cywe_path": "/Users/qiyanggu/Documents/workspace/cyberwar-cli/src",
+	"pypy_path": "/Users/qiyanggu/Documents/workspace/cyberwar-cli/src",
+	"network": {
+		"switch": {
+			"host": "127.0.0.1",
+			"port": ""
+		},
+		"vnic": {
+			"playground_address": ""
+		}
+	}
+}

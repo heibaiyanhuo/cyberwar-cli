@@ -3,6 +3,7 @@ import json
 import os
 
 CONFIG = None
+MY_PATH = os.path.abspath(__file__)
 
 def processing():
     parser = argparse.ArgumentParser()
@@ -25,6 +26,6 @@ def run(args):
 
 if __name__ == '__main__':
     global CONFIG
-    with open(os.getcwd() + '/cwconfig.json', 'r') as f:
+    with open(MY_PATH+ '/cwconfig.json', 'r') as f:
         CONFIG = json.load(f)
     processing()

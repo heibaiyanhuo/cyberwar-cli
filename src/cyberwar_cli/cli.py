@@ -2,6 +2,8 @@ import json
 import os
 import shutil
 
+MY_PATH = os.path.abspath(__file__)
+
 class CyWECLI():
     def __init__(self):
         super().__init__()
@@ -35,7 +37,7 @@ class CyWECLI():
     
     def write_config(self):
         config = None
-        with open(os.getcwd() + '/cwconfig.json', 'r') as f:
+        with open(MY_PATH + '/cwconfig.json', 'r') as f:
             config = json.load(f)
 
         config['cywe_path'] = os.path.abspath(self._arg_dict['cywe_path'])

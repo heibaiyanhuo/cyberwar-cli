@@ -25,6 +25,6 @@ def run(args):
 
 if __name__ == '__main__':
     global CONFIG
-    with open('./cwconfig.json', 'r') as f:
+    with open(os.getcwd() + '/cwconfig.json', 'r') as f:
         CONFIG = json.load(f)
     processing()

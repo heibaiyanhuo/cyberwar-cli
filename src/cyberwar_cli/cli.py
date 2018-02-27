@@ -35,7 +35,7 @@ class CyWECLI():
     
     def write_config(self):
         config = None
-        with open('cwconfig.json', 'r') as f:
+        with open('./cwconfig.json', 'r') as f:
             config = json.load(f)
 
         config['cywe_path'] = os.path.abspath(self._arg_dict['cywe_path'])

@@ -43,9 +43,9 @@ class CyWECLI():
         os.system('cp {}cwconfig.json {}/'.format(MY_PATH, self._arg_dict['name']))
 
         if len(self._arg_dict['cc']) > 0:
-            os.mkdir('{}/{}'.format(self._arg_dict['name'], self._arg_dict['cc']))
-            os.system('cp {}/python/bot/samples/command_and_control.py {}/{}'.format(self._arg_dict['cywe_path'], self._arg_dict['name'], self._arg_dict['cc']))
-            os.system('cp {}/python/game/src/cyberwar/braininterface/translations.py {}/{}'.format(self._arg_dict['cywe_path'], self._arg_dict['name'], self._arg_dict['cc']))
+            os.mkdir('{}'.format(self._arg_dict['cc']))
+            os.system('cp {}/python/bot/samples/command_and_control.py {}'.format(self._arg_dict['cywe_path'], self._arg_dict['cc']))
+            os.system('cp {}/python/game/src/cyberwar/braininterface/translations.py {}'.format(self._arg_dict['cywe_path'], self._arg_dict['cc']))
 
         print(BColors.OKGREEN + 'Finished!' + BColors.ENDC)
     

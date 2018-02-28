@@ -33,6 +33,11 @@ class CyWECLI():
         os.system('cp {}cw.py {}/'.format(MY_PATH, self._arg_dict['name']))
         os.system('cp {}cwconfig.json {}/'.format(MY_PATH, self._arg_dict['name']))
 
+        if len(self._arg_dict['cc']) > 0:
+            os.mkdir(self._arg_dict['cc'])
+            os.system('cp {}/python/bot/samples/command_and_control.py {}/'.format(self._arg_dict['cywe_path'], self._arg_dict['cc']))
+            os.system('cp {}/python/game/src/cyberwar/braininterface/translations.py {}/'.format(self._arg_dict['cywe_path'], self._arg_dict['cc']))
+
         print('Finished!')
     
     def write_config(self):

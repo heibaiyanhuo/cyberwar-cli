@@ -2,7 +2,7 @@ import json
 import os
 import shutil
 
-MY_PATH = os.path.abspath(__file__)
+MY_PATH = os.path.abspath(__file__)[:-6]
 
 class CyWECLI():
     def __init__(self):
@@ -16,7 +16,7 @@ class CyWECLI():
         self.get_input('pypy_path', 'Your local pypy path: (Don\'t use "~")\n')
         self.get_input('cc', 'Your C&C folder name: (leave blank for not creating C&C)\n')
         self.write_config()
-        self.processing()
+        # self.processing()
 
     def processing(self):
         os.mkdir(self._arg_dict['name'])
@@ -37,13 +37,12 @@ class CyWECLI():
     
     def write_config(self):
         config = None
-        config_path = os.path.join(MY_PATH, 'cwconfig.json')
-        with open(config_path, 'r') as f:
+        with open(MY_PATH + 'cwconfig.json', 'r') as f:
             config = json.load(f)
 
         config['cywe_path'] = os.path.abspath(self._arg_dict['cywe_path'])
         config['pypy_path'] = os.path.abspath(self._arg_dict['pypy_path'])
-        with open('cwconfig.json', 'w') as f:
+        with open(MY_PATH + 'cwconfig.json', 'w') as f:
             json.dump(config, f, indent='\t')
 
     def get_input(self, key, prompt):

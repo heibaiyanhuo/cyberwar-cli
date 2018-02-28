@@ -1,6 +1,6 @@
 {
-	"cywe_path": "/Users/qiyanggu/Documents/workspace/cyberwar-cli/src",
-	"pypy_path": "/Users/qiyanggu/Documents/workspace/cyberwar-cli/src",
+	"cywe_path": "",
+	"pypy_path": "",
 	"network": {
 		"switch": {
 			"host": "127.0.0.1",

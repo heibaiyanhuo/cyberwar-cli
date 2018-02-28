@@ -9,8 +9,8 @@ def processing():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('-m', '--mode', choices=['init', 'launch'], required=True)
-    parser.add_argument('-h', '--switch-host', default=CONFIG['network']['swicth']['host'])
-    parser.add_argument('-p', '--switch-port', default=CONFIG['network']['swicth']['port'])
+    parser.add_argument('-h', '--switch-host', default=CONFIG['network']['switch']['host'])
+    parser.add_argument('-p', '--switch-port', default=CONFIG['network']['switch']['port'])
     parser.add_argument('-a', '--playground-address', default=CONFIG['network']['vnic']['playground_address'])
     args = parser.parse_args()
     run(args)
@@ -25,7 +25,6 @@ def run(args):
         pass
 
 if __name__ == '__main__':
-    global CONFIG
     with open(MY_PATH + 'cwconfig.json', 'r') as f:
         CONFIG = json.load(f)
     processing()

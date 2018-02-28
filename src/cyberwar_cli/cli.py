@@ -25,13 +25,13 @@ class CyWECLI():
         os.system('cp {}/python/game/pypy-sandbox/src/*.py {}/'.format(self._arg_dict['cywe_path'], self._arg_dict['name']))
         os.system('cp {}/python/bot/samples/*.py {}/'.format(self._arg_dict['cywe_path'], self._arg_dict['name']))
 
-        os.system('cp {}/pypy/sandbox/libpypy3-c.so {}/'.format(self._arg_dict['pypy_path'], self._arg_dict['name']))
-        os.system('cp {}/pypy/sandbox/pypy3-c-sandbox {}/'.format(self._arg_dict['pypy_path'], self._arg_dict['name']))
+        os.system('cp {}/sandbox/libpypy3-c.so {}/'.format(self._arg_dict['pypy_path'], self._arg_dict['name']))
+        os.system('cp {}/sandbox/pypy3-c-sandbox {}/'.format(self._arg_dict['pypy_path'], self._arg_dict['name']))
 
         os.system('mv {}/simple_player_object_types.ini {}/object_types.ini'.format(self._arg_dict['name'], self._arg_dict['name']))
 
-        os.system('cp cw.py {}/'.format(self._arg_dict['name']))
-        os.system('cp cwconfig.json {}/'.format(self._arg_dict['name']))
+        os.system('cp {}cw.py {}/'.format(MY_PATH, self._arg_dict['name']))
+        os.system('cp {}cwconfig.json {}/'.format(MY_PATH, self._arg_dict['name']))
 
         print('Finished!')
     

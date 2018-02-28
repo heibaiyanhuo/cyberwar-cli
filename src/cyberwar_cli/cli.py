@@ -16,7 +16,7 @@ class CyWECLI():
         self.get_input('pypy_path', 'Your local pypy path: (Don\'t use "~")\n')
         self.get_input('cc', 'Your C&C folder name: (leave blank for not creating C&C)\n')
         self.write_config()
-        # self.processing()
+        self.processing()
 
     def processing(self):
         os.mkdir(self._arg_dict['name'])

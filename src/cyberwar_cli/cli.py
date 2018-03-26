@@ -75,6 +75,8 @@ class CyWECLI():
         input_path = ''
         while True:
             input_path = input(prompt).strip()
+            if input_path == '.exit':
+                exit()
             if key == 'name':
                 if len(input_path) > 0:
                     break
@@ -85,8 +87,6 @@ class CyWECLI():
                     break
                 else:
                     prompt = BColors.FAIL + 'Path does not exist, input again:\n' + BColors.ENDC
-            elif key == '.quit':
-                exit()
             else:
                 break
         return input_path

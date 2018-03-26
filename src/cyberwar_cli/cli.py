@@ -21,10 +21,12 @@ class CyWECLI():
     
     def start(self):
         print(BColors.HEADER +  '\n This CLI helps your rapidly create your own game. \n' + BColors.ENDC)
-        self.get_input('name', BColors.OKBLUE + 'Your cyberwar folder name:\n' + BColors.ENDC)
-        self.get_input('cywe_path', BColors.OKBLUE + 'Your local CyWE path: (Don\'t use "~")\n' + BColors.ENDC)
-        self.get_input('pypy_path', BColors.OKBLUE + 'Your local pypy path: (Don\'t use "~")\n' + BColors.ENDC)
-        self.get_input('cc', BColors.OKBLUE + 'Your C&C folder name: (leave blank for not creating C&C)\n' + BColors.ENDC)
+
+        self._arg_dict['name'] = self.get_input_path('name', BColors.OKBLUE + 'Your cyberwar folder name:\n' + BColors.ENDC)
+        self._arg_dict['cywe_path'] = self.get_input_path('cywe_path', BColors.OKBLUE + 'Your local CyWE path: (Don\'t use "~")\n' + BColors.ENDC)
+        self._arg_dict['pypy_path'] = self.get_input_path('pypy_path', BColors.OKBLUE + 'Your local pypy path: (Don\'t use "~")\n' + BColors.ENDC)
+        self._arg_dict['cc'] = self.get_input_path('cc', BColors.OKBLUE + 'Your C&C folder name: (leave blank for not creating C&C)\n' + BColors.ENDC)
+
         self.write_config()
         self.processing()
 
@@ -47,8 +49,8 @@ class CyWECLI():
         print(BColors.OKGREEN + 'Finished!' + BColors.ENDC)
     
     def update_game(self):
-        cyberwar_path = input(BColors.OKBLUE + 'Your cyberwar path:\n' + BColors.ENDC)
-        cywe_path = self.read_path_from_config()
+        cyberwar_path = self.get_input_path('cyberwar_path', BColors.OKBLUE + 'Your cyberwar path:\n' + BColors.ENDC)
+        cywe_path = self.get_input_path('cywe_path', BColors.OKBLUE + 'Your local CyWE path: (Don\'t use "~")\n' + BColors.ENDC)
         self.copy_files_from_cywe(cywe_path, cyberwar_path)
         print(BColors.OKGREEN + 'Updated!' + BColors.ENDC)
 
@@ -69,29 +71,25 @@ class CyWECLI():
         with open(MY_PATH + 'cwconfig.json', 'w') as f:
             json.dump(config, f, indent='\t')
 
-    def read_path_from_config(self):
-        config = None
-        with open(MY_PATH + 'cwconfig.json', 'r') as f:
-            config = json.load(f)
-        return config['cywe_path']
-
-    def get_input(self, key, prompt):
-        tmp = ''
+    def get_input_path(self, key, prompt):
+        input_path = ''
         while True:
-            tmp = input(prompt).strip()
+            input_path = input(prompt).strip()
             if key == 'name':
-                if len(tmp) > 0:
+                if len(input_path) > 0:
                     break
                 else:
                     prompt = BColors.WARNING + 'Please specify your folder name:\n' + BColors.ENDC
-            elif key == 'cywe_path' or key == 'pypy_path':
-                if os.path.exists(tmp):
+            elif key == 'cywe_path' or key == 'pypy_path' or key == 'cyberwar_path':
+                if os.path.exists(input_path):
                     break
                 else:
                     prompt = BColors.FAIL + 'Path does not exist, input again:\n' + BColors.ENDC
+            elif key == '.quit':
+                exit()
             else:
                 break
-        self._arg_dict[key] = tmp
+        return input_path
 
 def main():
     cli = CyWECLI()

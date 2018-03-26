@@ -33,7 +33,7 @@ class CyWECLI():
     def processing(self):
         os.mkdir(self._arg_dict['name'])
 
-        self.copy_files_from_cywe(self._arg_dict['cywe_path'], self._arg_dict['name'])
+        self.copy_files_from_cywe(self._arg_dict['name'], self._arg_dict['cywe_path'],)
         
         os.system('cp {}/pypy/sandbox/libpypy3-c.so {}/'.format(self._arg_dict['pypy_path'], self._arg_dict['name']))
         os.system('cp {}/pypy/sandbox/pypy3-c-sandbox {}/'.format(self._arg_dict['pypy_path'], self._arg_dict['name']))
@@ -51,7 +51,7 @@ class CyWECLI():
     def update_game(self):
         cyberwar_path = self.get_input_path('cyberwar_path', BColors.OKBLUE + 'Your cyberwar path:\n' + BColors.ENDC)
         cywe_path = self.get_input_path('cywe_path', BColors.OKBLUE + 'Your local CyWE path: (Don\'t use "~")\n' + BColors.ENDC)
-        self.copy_files_from_cywe(cywe_path, cyberwar_path)
+        self.copy_files_from_cywe(cyberwar_path, cywe_path)
         print(BColors.OKGREEN + 'Updated!' + BColors.ENDC)
 
     def copy_files_from_cywe(self, cyberwar_path, cywe_path):

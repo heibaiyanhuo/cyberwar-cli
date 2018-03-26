@@ -22,7 +22,7 @@ def run(args):
     elif args.mode == 'launch':
         command = 'PYTHONPATH={}/python/game/src/ python -m cyberwar.game --pypy={}'.format(CONFIG['cywe_path'], CONFIG['pypy_path'])
         os.system(command)
-        pass
+
 
 if __name__ == '__main__':
     with open(MY_PATH + 'cwconfig.json', 'r') as f:
